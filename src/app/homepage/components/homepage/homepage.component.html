@@ -1,0 +1,58 @@
+<section
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="content-container"
+>
+  <section class="search-wrapper">
+    <form
+      fxLayout="row"
+      fxLayoutGap="10px"
+      (submit)="performSearch(1)"
+      fxLayoutAlign="center center"
+    >
+      <mat-form-field appearance="outline" fxFlex="60">
+        <span matPrefix><mat-icon>search</mat-icon> &nbsp;</span>
+        <input matInput [formControl]="searchField" />
+      </mat-form-field>
+      <button
+        fxFlex="20"
+        type="submit"
+        color="primary"
+        mat-raised-button
+        [disabled]="searchField.invalid"
+      >
+        D2 Search
+      </button>
+    </form>
+  </section>
+  <section
+    fxLayout="column"
+    class="result-container default-padding"
+    fxLayoutAlign="center center"
+  >
+    <div
+      *ngIf="
+        searchExecuted && !(searching$ | async) && totalResults > 0;
+        else noResults
+      "
+    >
+      <section *ngFor="let result of searchResult$ | async">
+        <app-result-row [singleRow]="result"></app-result-row>
+      </section>
+    </div>
+    <ng-template #noResults>
+      <p *ngIf="searchExecuted; else genericMessage">No results found</p>
+      <ng-template #genericMessage
+        >Enter email or username to search</ng-template
+      >
+    </ng-template>
+  </section>
+</section>
+<mat-paginator
+  [length]="totalResults"
+  [pageSize]="itemPerPages"
+  (page)="onPaginationChanged($event)"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  aria-label="Select page"
+>
+</mat-paginator>
