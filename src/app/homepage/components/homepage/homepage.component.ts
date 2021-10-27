@@ -1,14 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { finalize, map } from 'rxjs/operators';
+import { ResultRow } from 'src/app/search-shared/components/result-row/result-row.component';
 
 export interface SearchResults {
   login: string;
@@ -23,8 +19,8 @@ export interface SearchResults {
 export class HomepageComponent implements OnInit {
   searchExecuted = false;
   searchField = new FormControl('', [Validators.required]);
-  searchResult$: BehaviorSubject<SearchResults[]> = new BehaviorSubject<
-    SearchResults[]
+  searchResult$: BehaviorSubject<ResultRow[]> = new BehaviorSubject<
+    ResultRow[]
   >([]);
   searching$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   error$: BehaviorSubject<string> = new BehaviorSubject<string>('');
@@ -78,13 +74,13 @@ export class HomepageComponent implements OnInit {
     this.performSearch(evt.pageIndex);
   }
 
-  adapt(result: any): SearchResults {
+  adapt(result: any): ResultRow {
     return ['login', 'id', 'avatar_url', 'url'].reduce(
       (prev: any, next: string) => {
         prev[next] = result[next];
         return prev;
       },
       {}
-    ) as SearchResults;
+    ) as ResultRow;
   }
 }

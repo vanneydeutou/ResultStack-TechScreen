@@ -1,14 +1,16 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-interface ResultRow {
+export interface ResultRow {
   username: string;
-  avatar: string;
   location: string;
-  realName: string;
+  name: string;
+  login: string;
   email: string;
-  publicRepoCount: number;
-  accountCreationTimestamp: string;
-  accountLastUpdateTimeStamp: string;
+  avatar_url: string;
+  gravatar_id: string;
+  public_repos: number;
+  created_at: string;
+  updated_at: string;
 }
 
 @Component({
@@ -17,7 +19,7 @@ interface ResultRow {
   styleUrls: ['./result-row.component.scss'],
 })
 export class ResultRowComponent implements OnInit {
-  @Input() singleRow!: any;
+  @Input() singleRow!: ResultRow;
 
   constructor() {}
 

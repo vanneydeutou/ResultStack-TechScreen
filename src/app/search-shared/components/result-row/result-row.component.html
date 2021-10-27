@@ -1,83 +1,3 @@
-<!-- <section
-  *ngIf="singleRow"
-  fxLayout="row"
-  fxLayoutGap="10px"
-  class="row-wrapper"
->
-  <ngx-avatar
-    [name]="singleRow.name"
-    [src]="singleRow.avatar_url"
-    [gravatarId]="singleRow.gravatar_id"
-    [round]="true"
-  >
-  </ngx-avatar>
-  <section fxLayout="row" fxLayoutGap="10px">
-    <section fxLayout="column">
-      <div fxLayout="row" fxLayoutGap="10px">
-        <p>Username:</p>
-        <mat-card-subtitle>{{ singleRow.login }}</mat-card-subtitle>
-      </div>
-      <div fxLayout="row" fxLayoutGap="10px">
-        <p>Location:</p>
-        <mat-card-subtitle>{{
-          singleRow.location ? singleRow.localtion : "N/A"
-        }}</mat-card-subtitle>
-      </div>
-    </section>
-    <section fxLayout="column">
-      <div fxLayout="row" fxLayoutGap="10px">
-        <p>Real Name:</p>
-        <mat-card-subtitle>{{ singleRow.name }}</mat-card-subtitle>
-      </div>
-      <div fxLayout="row" fxLayoutGap="10px">
-        <p>Email:</p>
-        <mat-card-subtitle>{{
-          singleRow.email ? singleRow.email : "N/A"
-        }}</mat-card-subtitle>
-      </div>
-    </section>
-    <section fxLayout="column">
-      <div fxLayout="row" fxLayoutGap="10px">
-        <p>Count of Public Repositories:</p>
-        <mat-card-subtitle>{{ singleRow.public_repos }}</mat-card-subtitle>
-      </div>
-      <div fxLayout="row" fxLayoutGap="10px">
-        <p>Account Created at:</p>
-        <mat-card-subtitle>{{ singleRow.created_at }}</mat-card-subtitle>
-      </div>
-    </section>
-    <section fxLayout="column">
-      <div fxLayout="row" fxLayoutGap="10px">
-        <p>Account Last Updated:</p>
-        <mat-card-subtitle>{{ singleRow.updated_at }}</mat-card-subtitle>
-      </div>
-    </section>
-  </section>
-</section>
-
-<mat-list role="list">
-  <mat-list-item role="listitem">
-    <div mat-line>
-      <ngx-avatar
-        [name]="singleRow.name"
-        [src]="singleRow.avatar_url"
-        [gravatarId]="singleRow.gravatar_id"
-        [round]="true"
-      >
-      </ngx-avatar>
-    </div>
-    <div mat-line>
-      Username: <mat-card-subtitle>{{ singleRow.login }}</mat-card-subtitle>
-    </div>
-    <div mat-line>
-      location:
-      <mat-card-subtitle>{{
-        singleRow.location ? singleRow.localtion : "N/A"
-      }}</mat-card-subtitle>
-    </div>
-  </mat-list-item>
-</mat-list> -->
-
 <mat-selection-list [multiple]="false">
   <mat-list-option>
     <div mat-list-icon>
@@ -96,7 +16,7 @@
       <div mat-line>
         location:
         <mat-card-subtitle>{{
-          singleRow.location ? singleRow.localtion : "N/A"
+          singleRow.location ? singleRow.location : "N/A"
         }}</mat-card-subtitle>
       </div>
       <div mat-line>
