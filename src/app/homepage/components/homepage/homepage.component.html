@@ -10,12 +10,16 @@
       (submit)="performSearch(1)"
       fxLayoutAlign="center center"
     >
-      <mat-form-field appearance="outline" fxFlex="60">
+      <mat-form-field appearance="outline" fxFlex="40">
         <span matPrefix><mat-icon>search</mat-icon> &nbsp;</span>
-        <input matInput [formControl]="searchField" />
+        <input
+          matInput
+          [formControl]="searchField"
+          [placeholder]="'Enter Email OR username to search'"
+        />
       </mat-form-field>
       <button
-        fxFlex="20"
+        fxFlex="10"
         type="submit"
         color="primary"
         mat-raised-button
@@ -25,11 +29,7 @@
       </button>
     </form>
   </section>
-  <section
-    fxLayout="column"
-    class="result-container default-padding"
-    fxLayoutAlign="center center"
-  >
+  <section class="result-container default-padding">
     <div
       *ngIf="
         searchExecuted && !(searching$ | async) && totalResults > 0;
@@ -42,9 +42,12 @@
     </div>
     <ng-template #noResults>
       <p *ngIf="searchExecuted; else genericMessage">No results found</p>
-      <ng-template #genericMessage
-        >Enter email or username to search</ng-template
-      >
+      <ng-template #genericMessage>
+        <h1 fxLayoutAlign="center center">Welcome to D2-Search</h1>
+        <p fxLayoutAlign="center center">
+          A GitHub Informational Search System
+        </p>
+      </ng-template>
     </ng-template>
   </section>
 </section>
